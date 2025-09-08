@@ -107,7 +107,7 @@ class Course{
 		if(!log)
 			options.muteHttpExceptions = true;
 
-		const lessons = JSON.parse(UrlFetchApp.fetch(url, options).getContentText());
+		const lessons = JSON.parse(UrlFetchApp.fetch(encodeURI(url), options).getContentText());
 		const filteredLessons = lessons
 									.filter(lesson => lesson.title.toUpperCase().startsWith(this.name.toUpperCase())) //filter by name
 									.filter(lesson => this.modules.includes("*") || this.modules.some(module => lesson.title.toUpperCase().includes(module.toUpperCase()))) //filter by module
@@ -137,7 +137,7 @@ class Course{
 		if(!log)
 			options.muteHttpExceptions = true;
 
-		return JSON.parse(UrlFetchApp.fetch(url, options).getContentText());
+		return JSON.parse(UrlFetchApp.fetch(encodeURI(url), options).getContentText());
 	}
 
 	/**

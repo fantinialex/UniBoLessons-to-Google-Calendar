@@ -37,7 +37,7 @@ class DegreeProgramme{
 	 */
 	getLessonsOfYear_(year){
 		const url = this.lessonsUrl+"/@@orario_reale_json?curricula="+this.curriculum+"&anno="+year;
-		return JSON.parse(UrlFetchApp.fetch(url).getContentText());
+		return JSON.parse(UrlFetchApp.fetch(encodeURI(url)).getContentText());
 	}
 
 	/**
